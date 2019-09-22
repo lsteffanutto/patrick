@@ -15,7 +15,7 @@ int main(int argc, char const *argv[]) {
   exit(EXIT_SUCCESS);
 
 
-  else if (fils >0) // code du pere
+  if (fils >0) // code du pere
   {
     int toto=0;
     int status;

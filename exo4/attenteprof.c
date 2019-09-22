@@ -9,7 +9,7 @@
 //créer fils puis boucle attente active, attend terminaison fils
 int main(int argc, char const *argv[]) {
 
-  pid_t pere = getppid();
+  pid_t pere = getpid();
   pid_t fils = fork();
 
   if (fils>0) //code du pere
