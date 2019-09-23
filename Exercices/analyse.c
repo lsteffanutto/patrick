@@ -6,16 +6,16 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-
-// execute ./printf
 int main(int argc, char const *argv[]) {
 
-  char ** my_args = malloc(2*sizeof(char*));
-  my_args[0]="./print";
-  my_args[1]=NULL;
+  FILE * fo = fopen("text.txt", "r");
 
-  execv("./print",my_args);
-
+  int nb_ligne = 0;
+  char c;
+  while ((c = getc(fo)) != EOF){
+    if (c == '\n')
+      ++nb_ligne;
+  }
+  printf("nb ligne = %i\n",nb_ligne );
   return 0;
-
 }

@@ -7,10 +7,13 @@
 #include <stdlib.h>
 
 
-//créer fils puis boucle attente active, attend terminaison fils
+//Se fait éxécuter par "exe.c"
 int main(int argc, char const *argv[]) {
 
-  printf("salut toi !");
+  while(*argv){
+    fprintf(stdout, "Arg: %s\n", *argv++);
+  }
+  //fprintf("salut toi !");
 
   return 0;
 
