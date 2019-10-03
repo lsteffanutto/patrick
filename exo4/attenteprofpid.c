@@ -4,24 +4,25 @@
 #include <fcntl.h>
 #include <errno.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 
 //créer fils puis boucle attente active, attend terminaison fils
 int main(int argc, char const *argv[]) {
 
   pid_t fils = fork();
+  int status;
   wait(&status); //info fils
-  printf("valeur de retour du fils:%d\n", WEXISTATUS(status));
+  printf("valeur de retour du fils:%d\n", WEXITSTATUS(status));
   exit(EXIT_SUCCESS);
 
 
   if (fils >0) // code du pere
   {
     int toto=0;
-    int status;
     while(++toto);
     wait(&status); //info fils
-    printf("valeur de retour du fils:%d\n", WEXISTATUS(status));
+    printf("valeur de retour du fils:%d\n", WEXITSTATUS(status));
 
     exit(EXIT_SUCCESS);
   }
