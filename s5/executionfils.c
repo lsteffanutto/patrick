@@ -9,16 +9,16 @@
 
 int main(int argc, char const *argv[]) {
 
-  int fd = open("test.txt", O_RDWR);
-
-  printf("l'index est: %i\n", fd );
-
+  // int fd = open("test.txt", O_RDWR);
+  //
+  // printf("l'index est: %i\n", fd );
+  //
 
   pid_t pid = fork();
 
   if(0 == pid){
 
-    printf("valeur: %i\n", fd);
+    //printf("valeur pid fils : %i\n", fd);
 
     char ** my_args = malloc(2*sizeof(char*));
     my_args[0]="./dispindex";
@@ -28,7 +28,7 @@ int main(int argc, char const *argv[]) {
   }
 
   else if(pid > 0){
-    wait(NULL);
+    printf("je fais R\n");
   }
 
 

@@ -12,19 +12,22 @@
 int main(int argc, char const *argv[]) {
 
   pid_t pid;
-  int fd[2];
-  pipe(fd);
+  // int fd[2];
+  // pipe(fd);
+  int mkfifo("michel",S_IRWXU)
   pid = fork();
 
   if(pid >0){
     char buffer[] = "Je suis un transexuel\n";
     close(fd[0]);
-    write(fd[1], buffer, strlen(buffer));
+    write(fd[1], michel, strlen(michel));
   } else if (pid == 0) {
-    char truc[32];
+    int fd_r = open("michel", O_RDONLY);
+    char truc[32]="deuxseptzero";
+    char* truc = malloc()
     close(fd[1]);
-    read(fd[0], truc, 32);
-    fprintf(stdout, "%s\n", truc);
+    read(fd[0], michel, 32);
+    fprintf(stdout, "%s\n", michel);
   }
 
   return EXIT_SUCCESS;

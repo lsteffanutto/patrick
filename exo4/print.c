@@ -10,10 +10,10 @@
 //Se fait éxécuter par "exe.c"
 int main(int argc, char const *argv[]) {
 
-  while(*argv){
-    fprintf(stdout, "Arg: %s\n", *argv++);
-  }
-  //fprintf("salut toi !");
+  // while(*argv){
+  //   fprintf(stdout, "Arg: %s\n", *argv++);
+  // }
+  printf("salut toi !\n");
 
   return 0;
 

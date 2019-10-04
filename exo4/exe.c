@@ -14,7 +14,13 @@ int main(int argc, char const *argv[]) {
   my_args[0]="./print";
   my_args[1]=NULL;
 
-  execv("./print",my_args);
+  pid_t fils = fork();
+
+    if(0==fils)
+      execv("./print",my_args);
+
+    if(0<fils)
+      printf("jsuis pere mais je fais R\n");
 
   return 0;
 

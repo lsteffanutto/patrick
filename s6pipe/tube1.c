@@ -13,6 +13,7 @@ int main(int argc, char const *argv[]) {
   int fd[2];
   pipe(fd);
   pid = fork();
+  
 
   if(pid >0){
     char buffer[] = "Je suis un transexuel\n";
