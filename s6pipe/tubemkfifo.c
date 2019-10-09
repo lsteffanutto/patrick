@@ -14,7 +14,7 @@ int main(int argc, char const *argv[]) {
   pid_t pid;
   // int fd[2];
   // pipe(fd);
-  int mkfifo("michel",S_IRWXU)
+  int mkfifo("michel",S_IRWXU) // créationtube nommé
   pid = fork();
 
   if(pid >0){
