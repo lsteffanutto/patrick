@@ -23,15 +23,15 @@ int main(int argc, char **argv)
 
    fprintf(stdout,"PID : %i\n",getpid());
 
-   filename = argv[1];
+   filename = argv[1]; //fichier text passé en argument, hérité du père
    str_len = strlen(argv[2])+1;
 
-   fd = open(filename,O_RDWR);
+   fd = open(filename,O_RDWR); //on l'ouvre
 
-   base_addr = (char *)mmap(NULL, MAP_SIZE , PROT_READ | PROT_WRITE, MAP_SHARED , fd , 0);
+   base_addr = (char *)mmap(NULL, MAP_SIZE , PROT_READ | PROT_WRITE, MAP_SHARED , fd , 0); //on le map
    curr_addr = base_addr;
 
-   fprintf(stdout,"String is : %s\n",curr_addr);
+   fprintf(stdout,"String is : %s\n",curr_addr); //Puis on pritnf le texte présent à l'adresse du fichier mbappé
 
    fd2 = open("/tmp/montube",O_RDONLY); //lecture, pour synchro les communication
    fprintf(stdout,"String is : %s\n",curr_addr);

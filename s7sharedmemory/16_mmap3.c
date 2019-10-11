@@ -24,13 +24,13 @@ int main(int argc, char **argv)
 
    filename = argv[1]; //il y a toujours le toto.txt hérité du père
    str_len = strlen(argv[2])+1; //+1 pour le caractère de fin de chaine
-   // argv[2] contient le texte à partager
+   // argv[2] contient le texte à partager dans le fichier mbappé
 
    fd = open(filename,O_RDWR);
    base_addr = (char *)mmap(NULL, MAP_SIZE , PROT_READ | PROT_WRITE, MAP_SHARED , fd , 0);
    curr_addr = base_addr;
 
-   memcpy(curr_addr, argv[2], str_len); //memcpy(dest, source, len)
+   memcpy(curr_addr, argv[2], str_len); //memcpy(dest, source, len) copy le texte passé en argument 2 à l'adresse du fichier mappé
 
    fd2 = open("/tmp/montube",O_WRONLY);//SYNCHRONISATION
    //tube nommé sinon on sait pas si l'autre a déjà ouvert le tube aussi ou non

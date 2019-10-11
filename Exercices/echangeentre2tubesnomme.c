@@ -9,19 +9,25 @@
 
 int main(int argc, char const *argv[]) {
 
-  char* tube = "tubalife";
-  mkfifo(tube,S_IXUSR);
   int fd;
+  char* tube = "/tmp/tubalife";
 
+  mkfifo(tube,S_IRUSR|S_IWUSR);
+
+  pid_t papa = getpid();
+  printf("mon pid est: %d\n",papa );
   pid_t pid = fork();
 
   if (pid>0){
+
+    printf("pere de pid: %d\n",pid );
     char* sender = "Assalam";
+    fprintf(stdout, "jveux envoyer %s\n\n",sender );
+    fd = open("/tmp/tubalife", O_WRONLY);
 
-    fd = open(tube, O_WRONLY);
+    if(fd<0) perror("bite je suis pas ouvert : \n\n");
+
     printf("tube ouvert pour ecrire\n");
-
-
     write(fd, sender, strlen(sender) );
     printf("msg sent\n");
 
@@ -30,13 +36,17 @@ int main(int argc, char const *argv[]) {
 
   if(pid ==0){
 
+    printf("pere de pid: %d\n",pid );
+
     char receiver[64];
-    
-    fd = open(tube,O_RDONLY);
+    printf("sizeof receiver =%d\n", sizeof(receiver));
+
+    fd = open("/tmp/tubalife",O_RDONLY);
+    if(fd<0) perror("bite jpeux pas lire\n\n");
+    printf("msg reçu\n");
     printf("tube ouvert pour lire\n");
 
     read(fd, receiver, sizeof(receiver) );
-    printf("msg reçu\n");
     printf("mon pere sent: %s\n", receiver);
     close(fd);
 
